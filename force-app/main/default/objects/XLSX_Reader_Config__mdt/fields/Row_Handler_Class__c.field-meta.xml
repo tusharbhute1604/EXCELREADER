@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Row_Handler_Class__c</fullName>
+    <description>Apex class implementing IXLSXRowHandler that turns parsed rows into an in-memory result (e.g. SObjectCreatorRowHandler, AggregateRowHandler, or a custom class). This is a distinct role from Result_Handler_Class__c: the row handler builds the result, the result handler persists it. Both must be set independently - a single class is not assumed to implement both interfaces.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Row Handler Class</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

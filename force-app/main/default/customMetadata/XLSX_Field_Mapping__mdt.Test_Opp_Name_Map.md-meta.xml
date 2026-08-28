@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fqn="Test_Opp_Name_Map">
+    <label>Test Opp Name Map</label>
+    <protected>false</protected>
+    <values>
+        <field>Config__c</field>
+        <value xsi:type="xsd:string">Test_Opportunity_Date_Upload</value>
+    </values>
+    <values>
+        <field>Excel_Column_Header__c</field>
+        <value xsi:type="xsd:string">Opportunity Name</value>
+    </values>
+    <values>
+        <field>Target_SObject__c</field>
+        <value xsi:type="xsd:string">Opportunity</value>
+    </values>
+    <values>
+        <field>Target_Field__c</field>
+        <value xsi:type="xsd:string">Name</value>
+    </values>
+</CustomMetadata>

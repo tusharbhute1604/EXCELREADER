@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fqn="Test_Amount_Sum_Map">
+    <label>Test Amount Sum Map</label>
+    <protected>false</protected>
+    <values>
+        <field>Config__c</field>
+        <value xsi:type="xsd:string">Test_Amount_Aggregator</value>
+    </values>
+    <values>
+        <field>Excel_Column_Header__c</field>
+        <value xsi:type="xsd:string">Amount</value>
+    </values>
+    <values>
+        <field>Target_SObject__c</field>
+        <value xsi:type="xsd:string">Lead</value>
+    </values>
+    <values>
+        <field>Target_Field__c</field>
+        <value xsi:type="xsd:string">NumberOfEmployees</value>
+    </values>
+    <values>
+        <field>Aggregate_Function__c</field>
+        <value xsi:type="xsd:string">SUM</value>
+    </values>
+</CustomMetadata>

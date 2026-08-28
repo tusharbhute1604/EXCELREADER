@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aggregate_Function__c</fullName>
+    <description>Leave blank for a normal record-creation column mapping (consumed by SObjectCreatorRowHandler: Excel_Column_Header__c -> Target_SObject__c/Target_Field__c). Set to turn this mapping row into an aggregation spec instead (consumed by AggregateRowHandler/FieldWriteBackResultHandler): Excel_Column_Header__c names the column to aggregate, and Target_Field__c names the field on the request's Related Record Id to write the result into. Target_SObject__c is ignored for aggregation specs since the target record already exists.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Aggregate Function</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>SUM</fullName>
+                <default>false</default>
+                <label>SUM</label>
+            </value>
+            <value>
+                <fullName>COUNT</fullName>
+                <default>false</default>
+                <label>COUNT</label>
+            </value>
+            <value>
+                <fullName>MIN</fullName>
+                <default>false</default>
+                <label>MIN</label>
+            </value>
+            <value>
+                <fullName>MAX</fullName>
+                <default>false</default>
+                <label>MAX</label>
+            </value>
+            <value>
+                <fullName>AVERAGE</fullName>
+                <default>false</default>
+                <label>AVERAGE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

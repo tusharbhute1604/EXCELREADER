@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fqn="Test_Amount_Aggregator">
+    <label>Test Amount Aggregator</label>
+    <protected>false</protected>
+    <values>
+        <field>Execution_Mode__c</field>
+        <value xsi:type="xsd:string">Sync</value>
+    </values>
+    <values>
+        <field>Row_Handler_Class__c</field>
+        <value xsi:type="xsd:string">AggregateRowHandler</value>
+    </values>
+    <values>
+        <field>Result_Handler_Class__c</field>
+        <value xsi:type="xsd:string">FieldWriteBackResultHandler</value>
+    </values>
+    <values>
+        <field>Error_Handling_Behavior__c</field>
+        <value xsi:type="xsd:string">Throw Exception</value>
+    </values>
+    <values>
+        <field>Max_Row_Threshold__c</field>
+        <value xsi:type="xsd:double">10000.0</value>
+    </values>
+    <values>
+        <field>Async_Threshold_Bytes__c</field>
+        <value xsi:type="xsd:double">500000.0</value>
+    </values>
+</CustomMetadata>

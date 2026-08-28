@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Header_Row_Number__c</fullName>
+    <description>The literal Excel row number (as shown in Excel's own row gutter) that holds the column headers. Blank defaults to row 1. Set this when the source table doesn't start at the very top of the sheet - e.g. a title banner or blank rows above the real header row. Consumed by SObjectCreatorRowHandler and AggregateRowHandler; a custom row handler receives every row's real number directly and can apply its own header-detection logic instead.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Header Row Number</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

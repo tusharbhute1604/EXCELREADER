@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Empty_Result_Behaviour__c</fullName>
+    <description>Only consulted by aggregate row handlers (e.g. AggregateRowHandler) when no data rows were found. Left blank, each aggregate function applies its own sensible default: Zero for SUM/COUNT, Null for MIN/MAX/AVERAGE. Set explicitly to override that default, or to Skip to suppress the result-handler write-back entirely.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Empty Result Behaviour</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Zero</fullName>
+                <default>false</default>
+                <label>Zero</label>
+            </value>
+            <value>
+                <fullName>Null</fullName>
+                <default>false</default>
+                <label>Null</label>
+            </value>
+            <value>
+                <fullName>Skip</fullName>
+                <default>false</default>
+                <label>Skip</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
