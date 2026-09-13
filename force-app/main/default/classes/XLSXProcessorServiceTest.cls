@@ -34,6 +34,31 @@ private class XLSXProcessorServiceTest {
     }
 
     @isTest
+    static void testSyncThrowExceptionStillWritesAnErrorLog() {
+        Blob file = XLSXTestFixtureFactory.generateXLSXFromRows(new List<List<String>>{ new List<String>{ 'Header' } });
+        ContentVersion cv = new ContentVersion(Title = 'Bad File', PathOnClient = 'leads.txt', VersionData = file);
+        insert cv;
+        cv = [SELECT ContentDocumentId FROM ContentVersion WHERE Id = :cv.Id];
+
+        XLSXProcessorService.ProcessingRequest req = new XLSXProcessorService.ProcessingRequest();
+        req.contentDocumentId = cv.ContentDocumentId;
+        req.configDeveloperName = 'Test_Lead_Sync_Upload';
+
+        Test.startTest();
+        try {
+            XLSXProcessorService.processFiles(new List<XLSXProcessorService.ProcessingRequest>{ req });
+            Assert.fail('Test_Lead_Sync_Upload is configured to Throw Exception on a bad file.');
+        } catch (XLSXParserException e) {
+            Assert.isTrue(e.getMessage().contains('Invalid file type'), 'Unexpected exception message: ' + e.getMessage());
+        }
+        Test.stopTest();
+
+        List<XLSX_Error_Log__c> logs = [SELECT Error_Message__c FROM XLSX_Error_Log__c];
+        Assert.areEqual(1, logs.size(), 'Throw Exception must still leave an audit trail in the sync path, same as it already does in async.');
+        Assert.isTrue(logs[0].Error_Message__c.contains('Invalid file type'), 'Logged message should match the thrown exception: ' + logs[0].Error_Message__c);
+    }
+
+    @isTest
     static void testMisconfiguredRowHandlerThrowsInsteadOfSilentSuccess() {
         XLSX_Reader_Config__mdt config = new XLSX_Reader_Config__mdt(
             Row_Handler_Class__c = null,

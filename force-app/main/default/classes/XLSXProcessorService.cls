@@ -81,6 +81,13 @@ public with sharing class XLSXProcessorService {
                     runPipeline(config, req, cv.VersionData);
                 }
             } catch (Exception e) {
+                // Throw Exception still needs a log record for the sync path - logError() below
+                // throws before it would otherwise reach the insert, and unlike XLSXAsyncProcessor
+                // there's no Finalizer downstream to catch that and log it after the fact. Log first,
+                // then let logError() decide whether to also throw.
+                if (config.Error_Handling_Behavior__c == 'Throw Exception') {
+                    insertErrorLog(config, req, e.getMessage(), e.getStackTraceString());
+                }
                 logError(config, req, e.getMessage(), e.getStackTraceString());
             }
         }
@@ -149,8 +156,13 @@ public with sharing class XLSXProcessorService {
             return;
         }
 
-        // Log Error. Intentionally system-mode: an error logger that only works when the acting
-        // user happens to have create access on the log object defeats its own purpose.
+        // Log Error.
+        insertErrorLog(config, req, message, stackTrace);
+    }
+
+    private static void insertErrorLog(XLSX_Reader_Config__mdt config, ProcessingRequest req, String message, String stackTrace) {
+        // Intentionally system-mode: an error logger that only works when the acting user happens
+        // to have create access on the log object defeats its own purpose.
         XLSX_Error_Log__c log = new XLSX_Error_Log__c();
         log.Error_Message__c = message;
         log.Stack_Trace__c = stackTrace;
